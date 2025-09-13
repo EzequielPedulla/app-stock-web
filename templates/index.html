@@ -1,0 +1,31 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Stock Web</title>
+</head>
+
+<body>
+    <h1>App Stock Web</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Barcode</th>
+            <th>name</th>
+            <th>price</th>
+            <th>stock</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product[0] }}</td>
+            <td>{{ product[1] }}</td>
+            <td>{{ product[2] }}</td>
+            <td>{{ product[3] }}</td>
+            <td>{{ product[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
