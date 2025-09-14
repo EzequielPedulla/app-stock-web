@@ -29,7 +29,8 @@
                 <td>${{ "%.2f"|format(product.price) }}</td>
                 <td>{{ product.stock }}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-primary">Editar</button>
+                    <a href="{{ url_for('products.edit_product', id=product.id) }}"
+                        class="btn btn-sm btn-outline-primary">Editar</a>
                     <button class="btn btn-sm btn-outline-danger">Eliminar</button>
                 </td>
             </tr>
