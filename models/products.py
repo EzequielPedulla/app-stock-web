@@ -1,5 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-from config import SQLALCHEMY_DATABASE_URI
 
 db = SQLAlchemy()
 
@@ -12,4 +11,4 @@ class Product(db.Model):
     stock = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return f"<Producto {self.nombre}>"
+        return f"<Producto {self.name}>"

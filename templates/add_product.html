@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Agregar Producto</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{{ url_for('products.index') }}" class="btn btn-outline-secondary">Volver</a>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre del Producto</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="barcode" class="form-label">Código de Barras</label>
+                <input type="text" class="form-control" id="barcode" name="barcode" maxlength="13">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Precio</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" min="0" required>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{{ url_for('products.index') }}" class="btn btn-outline-secondary me-md-2">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

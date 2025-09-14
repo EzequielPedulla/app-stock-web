@@ -1,31 +1,33 @@
-from flask import Flask, render_template
-import sqlite3
+from flask import Flask, redirect, url_for
+from routes.products_routes import bp as products_bp
+from models.products import db
+from config import SQLALCHEMY_DATABASE_URI
 
 app = Flask(__name__)
 
+# Configurar la base de datos
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-def get_products():
-    """Obtiene todos los productos de la base de datos.
+# Inicializar SQLAlchemy
+db.init_app(app)
 
-    Returns:
-        list: Lista de tuplas con los datos de los productos.
-    """
-    conn = sqlite3.connect('database/inventory.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT id,barcode,name,price,stock FROM products')
-    products = cursor.fetchall()
-    conn.close()
-    return products
+# Registrar el blueprint de productos
+app.register_blueprint(products_bp, url_prefix='/products')
+
+# Crear las tablas de la base de datos
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
 def index():
-    """Página principal que muestra la lista de productos.
+    """Página principal que redirige a la lista de productos.
 
     Returns:
-        str: HTML renderizado con la lista de productos.
+        Response: Redirección a la página de productos.
     """
-    return render_template('index.html', products=get_products())
+    return redirect(url_for('products.index'))
 
 
 if __name__ == '__main__':
