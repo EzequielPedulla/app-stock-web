@@ -61,9 +61,9 @@ coverage.xml
 .DS_Store
 Thumbs.db
 
-# Base de datos (opcional - puedes decidir si incluirla)
-# database/*.db
-# database/*.sqlite
+# Base de datos
+database/*.db
+database/*.sqlite
 
 # Logs
 *.log
