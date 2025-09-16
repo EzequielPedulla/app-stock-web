@@ -82,3 +82,14 @@ def edit_product(id):
             return render_template('edit_product.html', product=product, error=f'Error al guardar: {str(e)}')
 
     return render_template('edit_product.html', product=product)
+
+@bp.route('/delete/<int:id>', methods=['POST'])
+def delete_product(id):
+    try:
+        product = Product.query.get_or_404(id)
+        db.session.delete(product)
+        db.session.commit()
+        return redirect(url_for('products.index'))
+    except Exception as e:
+        db.session.rollback()
+        return render_template('edit_product.html', product=product, error=f'Error al eliminar: {str(e)}')

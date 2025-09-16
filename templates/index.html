@@ -31,11 +31,20 @@
                 <td>
                     <a href="{{ url_for('products.edit_product', id=product.id) }}"
                         class="btn btn-sm btn-outline-primary">Editar</a>
-                    <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+
+                    <form action="{{ url_for('products.delete_product', id=product.id) }}" method="post"
+                        style="display:inline;" class="delete-form">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                    </form>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ url_for('static', filename='js/products.js') }}"></script>
 {% endblock %}
