@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Products.js cargado');
   const deleteForms = document.querySelectorAll('form.delete-form');
 
   deleteForms.forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault(); // Detiene el envío inmediato
-      console.log('Submit detenido'); // <-- Verifica si aparece en consola
 
       Swal.fire({
         title: '¿Estás seguro?',

@@ -16,7 +16,7 @@
 
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <form method="POST">
+        <form method="POST" class="validate-form">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre del Producto</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -47,4 +47,9 @@
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ url_for('static', filename='js/forms.js') }}"></script>
 {% endblock %}
