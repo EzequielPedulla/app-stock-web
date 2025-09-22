@@ -91,10 +91,6 @@ app-stock-web/
 - 📱 Mejoras en diseño responsive
 - 🔐 Sistema de autenticación
 
-## 👨‍💻 Autor
 
-[Tu nombre]
 
-## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT.
